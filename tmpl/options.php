@@ -21,5 +21,23 @@ You can create an API key in your <a href="https://www.formstack.com/admin/apiKe
     </p>
 
 </form>
-</div>
 
+<?php
+    if (get_option('formstack_api_key')){
+    
+        echo "<h3 style='border-top:1px dotted gray;padding-top:20px'>API Status</h3>";
+        $res = wp_remote_fopen("https://www.formstack.com/api/forms?api_key=".get_option('formstack_api_key')."&type=json");
+        $res = json_decode($res);
+        
+        print "<ul>";
+        print "<li>API Key: <strong>{$res->status}</strong></li>";
+        
+        if ($res->error) print "<li>API Error: <strong style='color:red'>{$res->error}</strong></li>";
+        
+        print "<li>Available Forms: <strong>". count($res->response->forms)."</strong></li>";
+        print "</ul>";
+        
+    }
+?>
+
+</div>
