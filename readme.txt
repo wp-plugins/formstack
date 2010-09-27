@@ -45,5 +45,9 @@ to find to create an API key: https://www.formstack.com/admin/apiKey/main
 
 == Changelog ==
 
+= 1.0.1 =
+* Now using wp_remote_fopen for improved server compatibility. Should fix errors some people were having when loading the widgets page.
+* Minor housekeeping
+
 = 1.0.0 =
 * Hello World

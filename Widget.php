@@ -43,13 +43,13 @@ class Formstack_Widget extends WP_Widget {
         if(empty($instance['formkey'])) return;
         
         list($form, ) = explode('-', $instance['formkey']);
-        $wp = file_get_contents("http://www.formstack.com/forms/wp-ad.php?form={$form}");
+        $wp = wp_remote_fopen("http://www.formstack.com/forms/wp-ad.php?form={$form}");
 
         print <<< EOF
         <div class="fs_wp_sidebar">
         <link href="https://www.formstack.com/forms/css/2/wordpress-widget.css" type="text/css" rel="stylesheet" />
         <script type="text/javascript" src="https://www.formstack.com/forms/js.php?{$instance['formkey']}-v2">
-        </script><noscript><a href="/forms/michael-calctest" title="Online Form">Online Form - CalcTest</a></noscript>
+        </script><noscript><a href="https://www.formstack.com/forms/?{$instance['formkey']}" title="Online Form">Online Form</a></noscript>
         {$wp}
         </div>
 EOF;
