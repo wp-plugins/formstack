@@ -43,19 +43,11 @@ class Formstack_API {
         $args['api_key'] = $api_key;
         $args['type'] = 'json';
 
-        $ch = curl_init(self::$api_url . "/{$method}");
+        $url = self::$api_url . "/" . $method;
         
-        curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($args));
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-        curl_setopt($ch, CURLOPT_MAXREDIRS, 1);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $res = wp_remote_fopen("{$url}?".http_build_query($args));
         
-        $res = curl_exec($ch);
-        $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
-
-       return $status == 200 ? json_decode($res)->response : null;
+        return json_decode($res)->status == "ok" ? json_decode($res)->response : null;
         
     }
 

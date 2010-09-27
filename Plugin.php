@@ -94,14 +94,14 @@ class Formstack_Plugin {
      */
     public function renderFormstackShortcode($atts, $content = null, $code = '') {
 
-        $wp = file_get_contents("http://www.formstack.com/forms/wp-ad.php?form={$atts['id']}");
+        $wp = wp_remote_fopen("http://www.formstack.com/forms/wp-ad.php?form={$atts['id']}");
 
         if(empty($atts['id']) || empty($atts['viewkey'])) return '';
 
         return <<< EOF
         <link href="https://www.formstack.com/forms/css/2/wordpress-post.css" type="text/css" rel="stylesheet" />
         <script type="text/javascript" src="https://www.formstack.com/forms/js.php?{$atts['id']}-{$atts['viewkey']}-v2">
-        </script><noscript><a href="/forms/michael-calctest" title="Online Form">Online Form - CalcTest</a></noscript>
+        </script><noscript><a href="https://www.formstack.com/forms/?{$atts['id']}-{$atts['viewkey']}" title="Online Form">Online Form</a></noscript>
         {$wp}
 EOF;
 
