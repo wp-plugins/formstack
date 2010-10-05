@@ -54,3 +54,8 @@ to find to create an API key: https://www.formstack.com/admin/apiKey/main
 
 = 1.0.0 =
 * Hello World
+
+== Upgrade Notice ==
+
+= 1.0.2 =
+Fix for servers that don't support CURL. Upgrade if you are seeing error messages.
