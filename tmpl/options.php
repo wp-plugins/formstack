@@ -25,7 +25,7 @@ You can create an API key in your <a href="https://www.formstack.com/admin/apiKe
 <?php
     if (get_option('formstack_api_key')){
     
-        echo "<h3 style='border-top:1px dotted gray;padding-top:20px'>API Status</h3>";
+        echo "<h3 style='border-top:1px dotted gray;padding-top:20px'>Status</h3>";
         $res = wp_remote_fopen("https://www.formstack.com/api/forms?api_key=".get_option('formstack_api_key')."&type=json");
         $res = json_decode($res);
         
@@ -35,6 +35,11 @@ You can create an API key in your <a href="https://www.formstack.com/admin/apiKe
         if ($res->error) print "<li>API Error: <strong style='color:red'>{$res->error}</strong></li>";
         
         print "<li>Available Forms: <strong>". count($res->response->forms)."</strong></li>";
+        
+        print "<li>PHP Version: <strong>".PHP_VERSION."</strong>";
+        if (PHP_VERSION < 5) print " <span style='color:red'>(This plugin requires at least PHP version 5 or later.)</span>";
+        print "</li>";
+
         print "</ul>";
         
     }
