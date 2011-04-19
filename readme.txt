@@ -1,5 +1,5 @@
 === Formstack Online Forms ===
-Contributors: mmattax, noahwesley
+Contributors: mmattax, noahwesley, jeremyformstack
 Donate link: http://www.formstack.com
 Tags: forms, online forms, web forms, form builder, lead generation, contact form, contact forms, surveys, order forms, online order forms, online surveys, registration forms, event registration forms, lead generation form
 Requires at least: 2.8
