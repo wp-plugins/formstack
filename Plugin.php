@@ -76,7 +76,13 @@ class Formstack_Plugin {
 
     public function admin_menu() {
 
-        add_options_page('Formstack Options', 'Formstack', 'manage_options', 'Formstack', array($this, 'plugin_options'));
+        add_menu_page('Formstack Forms', 'Formstack', 'manage_options', 'Formstack', array($this, 'main_page'), '../wp-content/plugins/formstack/stack.gif', 26);
+        add_submenu_page('Formstack', 'Formstack Forms', 'View Forms', 'manage_options', 'Formstack', array($this, 'main_page'));
+        add_submenu_page('Formstack', 'Create Formstack Form', 'Create Form', 'manage_options', 'FormstackNewForm', array($this, 'main_page'));
+        add_submenu_page('Formstack', 'Formstack Submissions', 'Submissions', 'manage_options', 'FormstackSubmissions', array($this, 'main_page'));
+        add_submenu_page('Formstack', 'Formstack API Info', 'API Key', 'manage_options', 'FormstackAPI', array($this, 'main_page'));
+
+        add_options_page('Formstack Options', 'Formstack', 'manage_options', 'FormstackOptions', array($this, 'plugin_options'));
     }
 
     /**
@@ -142,6 +148,14 @@ EOF;
         include 'tmpl/options.php';
     }
 
+
+
+    /**
+     * Render the Formstack page
+     */
+    public function main_page() {
+        include 'tmpl/main.php';
+    }
 
     private function addActions($actions) {
 

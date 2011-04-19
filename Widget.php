@@ -74,12 +74,15 @@ EOF;
         }
 
         $res = Formstack_API::request($api_key, 'forms');
-
-        if(empty($res->forms)) {
-
+        if($res->status == "error"){
+            include 'tmpl/empty_api_key.php';
+            return;
+        }elseif($res->status != "ok"){
             include 'tmpl/api_error.php';
             return;
         }
+
+        $res = $res->response;
         
         $fields = array();
         foreach($this->fields as $i => $field)
@@ -91,6 +94,10 @@ EOF;
         print "<p>";
         print "<label for='{$fields['formkey']['id']}'>Choose a form to embed:";
         print "<select class='widefat' name='{$fields['formkey']['name']}' id='{$fields['formkey']['id']}'>";
+
+        if($fields['formkey']['value'] == '')
+            print "<option value=''></option>";
+
         foreach($res->forms as $form) {
             $sel = esc_attr($fields['formkey']['value']) == "{$form->id}-{$form->viewkey}" ?
                 "selected='selected'" : '';

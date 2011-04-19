@@ -8,8 +8,8 @@
 
                 ed.windowManager.open({
                     file   : url + '/dialog.php',
-                    width  : 300, //+ ed.getLang('cetsHelloWorld.delta_width', 0),
-                    height : 140, //+ ed.getLang('cetsHelloWorld.delta_height', 0),
+                    width  : 400, //+ ed.getLang('cetsHelloWorld.delta_width', 0),
+                    height : 160, //+ ed.getLang('cetsHelloWorld.delta_height', 0),
                     inline : 1
                 }, { plugin_url : url });
             });

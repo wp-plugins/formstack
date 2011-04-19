@@ -47,7 +47,11 @@ class Formstack_API {
         
         $res = wp_remote_fopen("{$url}?".http_build_query($args));
         
-        return json_decode($res)->status == "ok" ? json_decode($res)->response : null;
+        if($res === false)
+            return false;
+
+        return json_decode($res);
+        //return json_decode($res)->status == "ok" ? json_decode($res)->response : null;
         
     }
 

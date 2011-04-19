@@ -19,9 +19,19 @@
 
 require_once dirname(__FILE__). '/../config.php';
 
+if(!empty($_POST['formstack_api_key'])){
+    update_option('formstack_api_key', $_POST['formstack_api_key']);
+}
+
 $api_key = get_option('formstack_api_key');
-if(!empty($api_key))
+$res = null;
+if(!empty($api_key)){
     $res = Formstack_API::request($api_key, 'forms');
+    if($res->status == "ok"){
+        $res = $res->response;
+    }
+}
+
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -75,12 +85,12 @@ if(!empty($api_key))
 
         <?php
 
-            if(empty($api_key))
+            if(empty($api_key) || !empty($res->error))
                 include dirname(__FILE__). '/../tmpl/empty_api_key.php';
 
-            else if(empty($res->forms))
+            else if($res == null)
                 include dirname(__FILE__). '/../tmpl/api_error.php';
-            
+
             else {
 
         ?>
