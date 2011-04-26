@@ -76,7 +76,7 @@ class Formstack_Plugin {
 
     public function admin_menu() {
 
-        add_menu_page('Formstack Forms', 'Formstack', 'manage_options', 'Formstack', array($this, 'main_page'), '../wp-content/plugins/formstack/stack.gif', 26);
+        add_menu_page('Formstack Forms', 'Formstack', 'manage_options', 'Formstack', array($this, 'main_page'), '../wp-content/plugins/formstack/stack.gif');
         add_submenu_page('Formstack', 'Formstack Forms', 'View Forms', 'manage_options', 'Formstack', array($this, 'main_page'));
         add_submenu_page('Formstack', 'Create Formstack Form', 'Create Form', 'manage_options', 'FormstackNewForm', array($this, 'main_page'));
         add_submenu_page('Formstack', 'Formstack Submissions', 'Submissions', 'manage_options', 'FormstackSubmissions', array($this, 'main_page'));
