@@ -4,7 +4,7 @@ Donate link: http://www.formstack.com
 Tags: forms, online forms, web forms, form builder, lead generation, contact form, contact forms, surveys, order forms, online order forms, online surveys, registration forms, event registration forms, lead generation form
 Requires at least: 2.8
 Tested up to: 3.0
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 
 This plugin allows you to easily embed Web forms built with Formstack's online form builder
 into your sidebar, pages, and posts.
@@ -45,6 +45,9 @@ to find to create an API key: https://www.formstack.com/admin/apiKey/main
 
 == Changelog ==
 
+= 1.0.5 =
+* Formstack side-menu now defaults to the bottom (instead of possibly over-writing an existing menu).
+
 = 1.0.4 =
 * Increased functionality, build forms within Wordpress, better error messages
 
@@ -62,6 +65,9 @@ to find to create an API key: https://www.formstack.com/admin/apiKey/main
 * Hello World
 
 == Upgrade Notice ==
+
+= 1.0.4 =
+Significant upgrade to the plugin. Should resolve many problems experienced when inserting a form in a page/post.
 
 = 1.0.2 =
 Fix for servers that don't support CURL. Upgrade if you are seeing error messages.
