@@ -4,7 +4,7 @@
 Plugin Name: Formstack Plugin
 Plugin URI: http://wordpress.org/extend/plugins/formstack
 Description: Easily embed Formstack forms into your blog or WP pages.
-Version: 1.0.5
+Version: 1.0.6
 Author: Formstack, LLC
 Author URI: http://www.formstack.com
 */
@@ -79,7 +79,6 @@ class Formstack_Plugin {
         add_menu_page('Formstack Forms', 'Formstack', 'manage_options', 'Formstack', array($this, 'main_page'), '../wp-content/plugins/formstack/stack.gif');
         add_submenu_page('Formstack', 'Formstack Forms', 'View Forms', 'manage_options', 'Formstack', array($this, 'main_page'));
         add_submenu_page('Formstack', 'Create Formstack Form', 'Create Form', 'manage_options', 'FormstackNewForm', array($this, 'main_page'));
-        add_submenu_page('Formstack', 'Formstack Submissions', 'Submissions', 'manage_options', 'FormstackSubmissions', array($this, 'main_page'));
         add_submenu_page('Formstack', 'Formstack API Info', 'API Key', 'manage_options', 'FormstackAPI', array($this, 'main_page'));
 
         add_options_page('Formstack Options', 'Formstack', 'manage_options', 'FormstackOptions', array($this, 'plugin_options'));
@@ -106,7 +105,7 @@ class Formstack_Plugin {
 
         return <<< EOF
         <link href="https://www.formstack.com/forms/css/2/wordpress-post.css" type="text/css" rel="stylesheet" />
-        <script type="text/javascript" src="https://www.formstack.com/forms/js.php?{$atts['id']}-{$atts['viewkey']}-v2">
+        <script type="text/javascript" src="https://www.formstack.com/forms/js.php?{$atts['id']}-{$atts['viewkey']}">
         </script><noscript><a href="https://www.formstack.com/forms/?{$atts['id']}-{$atts['viewkey']}" title="Online Form">Online Form</a></noscript>
         {$wp}
 EOF;
