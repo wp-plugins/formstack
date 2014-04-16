@@ -4,7 +4,7 @@
 Plugin Name: Formstack Widget
 Plugin URI: http://wordpress.org/extend/plugins/formstack
 Description: Easily embed Formstack forms into your sidebar.
-Version: 1.0.6
+Version: 1.0.7
 Author: Formstack, LLC
 Author URI: http://www.formstack.com
 */
@@ -33,7 +33,7 @@ class Formstack_Widget extends WP_Widget {
     private $fields = array('formkey');
 
     function  __construct() {
-     
+
         $desc = "Easily embed Formstack forms into your sidebar.";
         parent::__construct('fs_wp_widget', 'Formstack', array('description' => $desc), array('width' => 200));
     }
@@ -41,7 +41,7 @@ class Formstack_Widget extends WP_Widget {
     function widget($args, $instance) {
 
         if(empty($instance['formkey'])) return;
-        
+
         list($form, ) = explode('-', $instance['formkey']);
         $wp = wp_remote_fopen("http://www.formstack.com/forms/wp-ad.php?form={$form}");
 
@@ -83,7 +83,7 @@ EOF;
         }
 
         $res = $res->response;
-        
+
         $fields = array();
         foreach($this->fields as $i => $field)
             $fields[$field] = array(
