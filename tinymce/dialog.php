@@ -37,61 +37,54 @@ if(!empty($api_key)){
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
     <head>
-        
+
         <title>Formstack</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<script language="javascript" type="text/javascript" src="<?php echo get_option('siteurl') ?>/wp-includes/js/tinymce/tiny_mce_popup.js"></script>
-	<script language="javascript" type="text/javascript" src="<?php echo get_option('siteurl') ?>/wp-includes/js/tinymce/utils/mctabs.js"></script>
-	<script language="javascript" type="text/javascript" src="<?php echo get_option('siteurl') ?>/wp-includes/js/tinymce/utils/form_utils.js"></script>
-        
+        <script language="javascript" type="text/javascript" src="<?php echo get_option('siteurl') ?>/wp-includes/js/tinymce/tiny_mce_popup.js"></script>
+        <script language="javascript" type="text/javascript" src="<?php echo get_option('siteurl') ?>/wp-includes/js/tinymce/utils/mctabs.js"></script>
+        <script language="javascript" type="text/javascript" src="<?php echo get_option('siteurl') ?>/wp-includes/js/tinymce/utils/form_utils.js"></script>
 
         <script language="javascript" type="text/javascript">
 
-        function fs_init() {
-            
-        }
-	function fs_submit() {
+            function fs_init() {
 
-		var e = document.getElementById('fs_form_select');
-
+            }
+            function fs_submit() {
+                var e = document.getElementById('fs_form_select');
                 var tag = '[Formstack id=';
+
                 tag += e.value.split('-')[0];
                 tag += ' viewkey=';
                 tag += e.value.split('-')[1];
                 tag += ']';
-              
-		if(window.tinyMCE) {
 
-                    window.tinyMCE.execInstanceCommand('content', 'mceInsertContent', false, tag);
+                if (window.tinyMCE) {
+                    window.tinyMCE.execCommand('mceInsertContent', false, tag);
                     tinyMCEPopup.editor.execCommand('mceRepaint');
                     tinyMCEPopup.close();
-		}
+                }
 
-		return;
-	}
-	</script>
-    <style type="text/css">
-        
-        input, select {
-            font-size:14px;
-        }
-    </style>
+                return;
+            }
+        </script>
+        <style type="text/css">
 
-	<base target="_self" />
+            input, select {
+                font-size:14px;
+            }
+        </style>
 
-
+        <base target="_self" />
     </head>
     <body onload="tinyMCEPopup.executeOnLoad('fs_init();');">
 
         <?php
 
-            if(empty($api_key) || !empty($res->error))
+            if (empty($api_key) || !empty($res->error)) {
                 include dirname(__FILE__). '/../tmpl/empty_api_key.php';
-
-            else if($res == null)
+            } elseif ($res == null) {
                 include dirname(__FILE__). '/../tmpl/api_error.php';
-
-            else {
+            } else {
 
         ?>
 
@@ -110,9 +103,8 @@ if(!empty($api_key)){
             <br />
             <input type="submit" value="Insert Form" class="button" onclick="fs_submit(); return false;" />
         </form>
-        
+
         <?php } ?>
 
     </body>
 </html>
-

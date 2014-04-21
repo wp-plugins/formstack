@@ -4,7 +4,7 @@
 Plugin Name: Formstack Plugin
 Plugin URI: http://wordpress.org/extend/plugins/formstack
 Description: Easily embed Formstack forms into your blog or WP pages.
-Version: 1.0.6
+Version: 1.0.8
 Author: Formstack, LLC
 Author URI: http://www.formstack.com
 */
@@ -64,12 +64,12 @@ class Formstack_Plugin {
         if(!current_user_can('edit_posts') && !current_user_can('edit_pages')) return;
 
         register_setting('formstack_plugin', 'formstack_api_key');
-        
+
         if(get_user_option('rich_editing') == 'true')
-            $this->addFilters(array( 
+            $this->addFilters(array(
                'mce_buttons'
               ,'mce_external_plugins'
-                
+
             ));
     }
 
@@ -120,7 +120,7 @@ EOF;
      * @return <type>
      */
     public function mce_buttons($buttons) {
-        
+
         array_push($buttons, '|', 'formstack');
         return $buttons;
     }
@@ -143,7 +143,7 @@ EOF;
 
         if(!current_user_can('manage_options'))
             wp_die( __('You do not have sufficient permissions to access this page.') );
-        
+
         include 'tmpl/options.php';
     }
 

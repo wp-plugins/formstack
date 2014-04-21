@@ -1,28 +1,30 @@
 (function(){
 
-    tinymce.create('tinymce.plugins.formstack', {
+  tinymce.create('tinymce.plugins.formstack', {
 
-        init : function(ed, url) {
+    init : function(ed, url) {
 
-            ed.addCommand('fs_embed_window', function() {
-
-                ed.windowManager.open({
-                    file   : url + '/dialog.php',
-                    width  : 400, //+ ed.getLang('cetsHelloWorld.delta_width', 0),
-                    height : 160, //+ ed.getLang('cetsHelloWorld.delta_height', 0),
-                    inline : 1
-                }, { plugin_url : url });
-            });
-            
-            ed.addButton('formstack', {
-                title : 'Formstack',
-		cmd : 'fs_embed_window',
-		image : url + '/stack.gif'
-            });
+      ed.addCommand('fs_embed_window', function() {
+          var dialogUrl = url + '/dialog.php';
+          ed.windowManager.open(
+            {
+              width: 400,
+              height: 160,
+              url: dialogUrl
+            }
+          );
         }
-    });
+      );
 
-    tinymce.PluginManager.add('formstack', tinymce.plugins.formstack);
+      ed.addButton('formstack', {
+          title : 'Formstack',
+          cmd : 'fs_embed_window',
+          image : url + '/stack.gif'
+        }
+      );
+    }
+  });
+
+  tinymce.PluginManager.add('formstack', tinymce.plugins.formstack);
 
 })()
-
