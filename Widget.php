@@ -4,7 +4,7 @@
 Plugin Name: Formstack Widget
 Plugin URI: http://wordpress.org/extend/plugins/formstack
 Description: Easily embed Formstack forms into your sidebar.
-Version: 1.0.8
+Version: 1.0.9
 Author: Formstack, LLC
 Author URI: http://www.formstack.com
 */
