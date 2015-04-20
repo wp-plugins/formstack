@@ -4,7 +4,7 @@
 Plugin Name: Formstack Plugin
 Plugin URI: http://wordpress.org/extend/plugins/formstack
 Description: Easily embed Formstack forms into your blog or WP pages.
-Version: 1.0.9
+Version: 1.0.10
 Author: Formstack, LLC
 Author URI: http://www.formstack.com
 */
