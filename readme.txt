@@ -3,7 +3,7 @@ Contributors: mmattax, noahwesley, jeremyformstack, brianFormstack
 Donate link: http://www.formstack.com
 Tags: forms, online forms, web forms, form builder, lead generation, contact form, contact forms, surveys, order forms, online order forms, online surveys, registration forms, event registration forms, lead generation form
 Requires at least: 2.8
-Tested up to: 4.2 
+Tested up to: 4.3
 Stable tag: 1.0.10
 
 This plugin allows you to easily embed Web forms built with Formstack's online form builder
